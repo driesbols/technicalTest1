@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\personal\\TechnicalTest\\TechnicalTest\\TechnicalTest.csproj",
+      "projectUniqueName": "D:\\personal\\technicalTest1\\TechnicalTest\\TechnicalTest.csproj",
       "projectName": "TechnicalTest",
-      "projectPath": "D:\\personal\\TechnicalTest\\TechnicalTest\\TechnicalTest.csproj",
+      "projectPath": "D:\\personal\\technicalTest1\\TechnicalTest\\TechnicalTest.csproj",
       "packagesPath": "C:\\Users\\DriesBols\\.nuget\\packages\\",
-      "outputPath": "D:\\personal\\TechnicalTest\\TechnicalTest\\obj\\",
+      "outputPath": "D:\\personal\\technicalTest1\\TechnicalTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
