@@ -20,8 +20,8 @@ Klant:
 - Achternaam
 - Adresgegevens
 - 0 of meerdere contactgegevens
-  Type (Email/GSM)
-  Waarde
+  - Type (Email/GSM)
+  - Waarde
 
 Factuur:
 - Datum 
