@@ -12,7 +12,7 @@ namespace TechnicalTest.Domain
         public string CityName { get; set; }
         public string CityZipCode { get; set; }
         public string StreetName { get; set; }
-        public string houseNr { get; set; }
-        public string boxNr { get; set; }
+        public string HouseNumber { get; set; }
+        public string BoxNumber { get; set; }
     }
 }
