@@ -7,7 +7,7 @@ namespace TechnicalTest.Domain
 {
     public enum ContactDataTypes
     {  
-        Email,
-        Gsm
+        EMAIL,
+        GSM
     }
 }

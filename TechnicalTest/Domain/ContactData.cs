@@ -7,7 +7,7 @@ namespace TechnicalTest.Domain
 {
     public class ContactData
     {
-        public ContactDataTypes Type { get; set; }
+        public string Type { get; set; }
         public string Value { get; set; }
     }
 }
