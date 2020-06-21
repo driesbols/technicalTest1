@@ -11,12 +11,9 @@ namespace TechnicalTest.Data
 {
     public class InvoiceMapper : BaseMapper
     {
-        private readonly string _partitionKey;
-        public InvoiceMapper() : this("Invoices", "id") { }
-
-        private InvoiceMapper(string containerId, string partitionKey) : base(containerId, "/" + partitionKey)
+        private InvoiceMapper() : base("Invoices", "/id")
         {
-            _partitionKey = partitionKey;
+        
         }
 
         public async Task CreateInvoice(Invoice invoice)

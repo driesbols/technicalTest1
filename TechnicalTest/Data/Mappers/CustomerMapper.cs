@@ -12,12 +12,9 @@ namespace TechnicalTest.Data
 {
     public class CustomerMapper : BaseMapper
     {
-        private readonly string _partitionKey;
-        public CustomerMapper() : this("Customers", "id"){ }
-
-        private CustomerMapper(string containerId, string partitionKey) : base(containerId, "/" + partitionKey) 
+        private CustomerMapper() : base("Customers", "/id") 
         {
-            _partitionKey = partitionKey;
+
         }
 
         public async Task CreateCustomer(Customer customer)
