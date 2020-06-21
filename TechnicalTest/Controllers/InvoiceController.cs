@@ -13,15 +13,24 @@ namespace TechnicalTest.Controllers
     public class InvoiceController
     {
         private readonly IInvoiceRepository _invoiceRepository;
+        private readonly ContactDataValidator contactDataValidator;
+
 
         public InvoiceController(IInvoiceRepository invoiceRepository)
         {
             _invoiceRepository = invoiceRepository;
+            contactDataValidator = new ContactDataValidator();
         }
 
         [HttpPost, Route("CreateInvoice")]
         public async Task<IActionResult> CreateInvoice(Invoice invoice)
         {
+            foreach (ContactData contactData in invoice.Customer.ContactData)
+            {
+                if (!contactDataValidator.Validate(contactData))
+                    return new BadRequestObjectResult($"Contact data with type '{contactData.Type}' and value '{contactData.Value}' is invalid");
+            }
+
             await _invoiceRepository.CreateInvoice(invoice);
 
             return new ObjectResult($"Invoice succesfully created with id '{invoice.id}'");

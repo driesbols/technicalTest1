@@ -19,9 +19,11 @@ namespace TechnicalTest.Controllers
     public class CustomerController
     {
         private readonly ICustomerRepository _repository;
+        private ContactDataValidator contactDataValidator;
         public CustomerController(ICustomerRepository repository)
         {
             _repository = repository;
+            contactDataValidator = new ContactDataValidator();
         }
         
         [HttpPost, Route("CreateCustomer")]
@@ -29,7 +31,7 @@ namespace TechnicalTest.Controllers
         {
             foreach(ContactData contactData in customer.ContactData)
             {
-                if (!ValidateContactData(contactData))
+                if (!contactDataValidator.Validate(contactData))
                     return new BadRequestObjectResult($"Contact data with type '{contactData.Type}' and value '{contactData.Value}' is invalid");
             }
 
@@ -41,8 +43,8 @@ namespace TechnicalTest.Controllers
         [HttpPost, Route("AddContactData")]
         public async Task<IActionResult> AddContactData(AddContactDataDTO contactDataDTO)
         {
-            if (!ValidateContactData(contactDataDTO.ContactData))
-                return new BadRequestResult();
+            if (!contactDataValidator.Validate((contactDataDTO.ContactData)))
+                    return new BadRequestObjectResult($"Contact data with type '{contactDataDTO.ContactData.Type}' and value '{contactDataDTO.ContactData.Value}' is invalid");
             try
             {
                 await _repository.AddContactData(contactDataDTO);
@@ -54,35 +56,6 @@ namespace TechnicalTest.Controllers
             
 
             return new ObjectResult($"Contact data succesfully added to customer with id '{contactDataDTO.CustomerId}'");
-        }
-
-        private bool ValidateContactData(ContactData contactData)
-        {
-            if (contactData == null)
-                return false;
-
-            bool isEnum = Enum.TryParse(contactData.Type, out ContactDataTypes type);
-
-            if (!isEnum)
-                return isEnum;
-
-            switch (type)
-            {
-                case ContactDataTypes.EMAIL:
-                    try
-                    {
-                        MailAddress m = new MailAddress(contactData.Value);
-                        return true;
-                    }
-                    catch (FormatException)
-                    {
-                        return false;
-                    }
-                case ContactDataTypes.GSM:
-                    return true;
-            }
-
-            return false;
         }
     }
 }
