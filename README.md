@@ -32,4 +32,5 @@ Factuur:
 - Aantal
 - Prijs per eenheid
 - Totaalprijs
+ 
  Let op, dat je dus met Cosmos DB werkt (Je kan hiervoor een emulator installeren lokaal), en dus geen SQL database gebruikt. Hierdoor ga je met een document-db werken ipv een relationele db. 
