@@ -61,7 +61,7 @@ namespace TechnicalTest.Controllers
             if (contactData == null)
                 return false;
 
-            bool isEnum = Enum.TryParse(contactData.Type.ToUpperInvariant(), out ContactDataTypes type);
+            bool isEnum = Enum.TryParse(contactData.Type, out ContactDataTypes type);
 
             if (!isEnum)
                 return isEnum;

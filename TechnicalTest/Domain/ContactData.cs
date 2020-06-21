@@ -7,7 +7,12 @@ namespace TechnicalTest.Domain
 {
     public class ContactData
     {
-        public string Type { get; set; }
+        private string _type;
+        public string Type
+        {
+            get => _type;
+            set => _type = value.ToUpperInvariant();
+        }
         public string Value { get; set; }
     }
 }
