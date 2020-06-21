@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TechnicalTest.Data;
 using TechnicalTest.Data.Repositories;
 
 namespace TechnicalTest
@@ -12,6 +13,7 @@ namespace TechnicalTest
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            ConfigureDbConnectionData();
         }
 
         public IConfiguration Configuration { get; }
@@ -42,6 +44,13 @@ namespace TechnicalTest
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void ConfigureDbConnectionData()
+        {
+            BaseMapper.EndpointUri = Configuration["EndpointUri"];
+            BaseMapper.PrimaryKey = Configuration["PrimaryKey"];
+            BaseMapper.DatabaseId = Configuration["DatabaseId"];
         }
     }
 }
