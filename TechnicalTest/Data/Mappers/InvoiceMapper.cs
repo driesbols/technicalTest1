@@ -11,7 +11,7 @@ namespace TechnicalTest.Data
 {
     public class InvoiceMapper : BaseMapper
     {
-        private InvoiceMapper() : base("Invoices", "/id")
+        public InvoiceMapper() : base("Invoices", "/id")
         {
         
         }

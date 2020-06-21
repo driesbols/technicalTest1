@@ -12,7 +12,7 @@ namespace TechnicalTest.Data
 {
     public class CustomerMapper : BaseMapper
     {
-        private CustomerMapper() : base("Customers", "/id") 
+        public CustomerMapper() : base("Customers", "/id") 
         {
 
         }
