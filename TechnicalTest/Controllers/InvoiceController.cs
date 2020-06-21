@@ -35,7 +35,7 @@ namespace TechnicalTest.Controllers
                 await _invoiceRepository.UpdateInvoiceStatus(invoiceStatusDTO);
             }catch (KeyNotFoundException)
             {
-                return new BadRequestResult();
+                return new BadRequestObjectResult($"Invoice with id '{invoiceStatusDTO.InvoiceId}' not found");
             }
             
             return new ObjectResult($"Invoice status succesfully updated  to status '{invoiceStatusDTO.Status}' with invoice id '{invoiceStatusDTO.InvoiceId}'");
